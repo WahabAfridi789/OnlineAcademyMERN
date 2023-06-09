@@ -1,0 +1,54 @@
+// Teacher Route
+app.use("/teachers", teacherRoutes);
+
+Teacher Endpoints (CRUD)
+
+POST=>  /teachers
+
+TestData
+{
+  "name": "Humaira Waqas",
+   "email": "humairawaqas@example",
+   "subject": "TSE"
+}
+
+get=> /teachers
+get=> /teachers/:id
+put=> /teachers/:id
+delete=> /teachers/:id
+
+
+
+// Student Route
+app.use("/students", studentRoutes);
+
+// Student Endpoints (CRUD)
+// POST=>  /students
+
+Test Data
+
+{
+"name": "Abdul Wahab",
+"email": "abdulwahab@example",
+"grade": 10,
+"teacherId": "teacher Id Which Is Stored In DB"
+}
+
+//get=> /students
+//get=> /students/:id
+//put=> /students/:id
+//delete=> /students/:id
+
+
+
+// ShoppingCart Route
+app.use("/shoppingCart", shoppingCartRoutes);
+
+// ShoppingCart Endpoints
+
+POST=>  /shoppingCart/setItemdetails
+
+{
+  "itemNumber": "ABC123",
+   "quantity": 2
+ }
