@@ -1,12 +1,27 @@
 
-# MERN Stack Project
+## MERN Stack Project
 
+This is a full-stack web application that uses the MERN stack, which is a combination of MongoDB, Express.js, React.js, and Node.js. The MERN stack provides a robust framework for building scalable web applications.
 
-This project is a full-stack web application built using the MERN stack. The MERN stack is a combination of MongoDB, Express.js, React.js, and Node.js, which provides a robust framework for building scalable web applications. 
+The project includes an admin interface that allows for various operations to be performed on the Teacher and Student modules. There is a reference between students and teachers, which makes it easy to manage both modules.
 
-The project includes an admin interface that allows for various operations to be performed on the Teacher module and Students. There is a reference between students and teachers, which allows for easy management of both modules. 
+To get started with the project, you'll need to run the following command in the OnlineAcademyMERN directory:
 
-The front-end of the application is developed using the React.js framework, which provides a modern and efficient user interface. 
+```
+npm install
+```
 
+Once you've installed the necessary dependencies, start the server by running:
 
-### `Feel free to contact if you are facing any issue with the project kwahab214@gmail.com  Phone: +923040030331"
+```
+node app.js
+```
+
+Then, navigate to the frontend directory and run the following commands:
+
+```
+npm install
+npm start
+```
+
+If you encounter any issues with the project, feel free to contact me at kwahab214@gmail.com or by phone at +923040030331.
