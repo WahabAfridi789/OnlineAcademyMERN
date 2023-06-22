@@ -61,7 +61,8 @@ const Teachers = () => {
     setShowModal(false);
   };
 
-  const addTeacher = async () => {
+  const addTeacher = async (e) => {
+    e.preventDefault();
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(

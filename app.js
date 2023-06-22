@@ -9,6 +9,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const cors = require("cors");
 const helmet = require("helmet");
 
+const MONGO_URL = process.env.DATABASE_URL;
 const mongoose = require("mongoose");
 
 const teacherRoutes = require("./routes/teacherRoutes");
@@ -66,9 +67,12 @@ const verifyToken = (req, res, next) => {
   });
 };
 
+// const url =
+//   "mongodb+srv://kwahab214:kwahab214@cluster0.lcipolf.mongodb.net/?retryWrites=true&w=majority";
 
+const url = "mongodb://localhost:27017/tuitionAcademy";
 
-const connection = mongoose.connect("mongodb://0.0.0.0:27017/tuitionAcademy", {
+const connection = mongoose.connect(`${url}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -98,7 +102,7 @@ app.use("/teachers", verifyToken, teacherRoutes);
 //delete=> /teachers/:id
 
 // Student Route
-app.use("/students", verifyToken,studentRoutes);
+app.use("/students", verifyToken, studentRoutes);
 
 // Student Endpoints (CRUD)
 // POST=>  /students

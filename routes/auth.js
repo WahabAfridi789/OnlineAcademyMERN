@@ -22,9 +22,9 @@ router.post("/signup", (req, res) => {
 // POST /auth/login
 router.post("/login", (req, res, next) => {
   console.log("LOGIN")
-  if (req.isAuthenticated()) {
-    return res.json({ message: "You are already logged in" });
-  }
+  // if (req.isAuthenticated()) {
+  //   return res.json({ message: "You are already logged in" });
+  // }
 
   passport.authenticate("local", (err, user, info) => {
     if (err) {
@@ -51,8 +51,7 @@ router.post("/login", (req, res, next) => {
         expiresIn: "1h",
       });
 
-      
-
+    
       res.json({
         message: "Login successful", token,
         user: {
@@ -67,48 +66,54 @@ router.post("/login", (req, res, next) => {
 
 
 // GET /auth/logout
+// router.get("/logout", (req, res) => {
+//   req.logout((err) => {
+//     if (err) {
+//       router.post("/login", (req, res, next) => {
+//         if (req.isAuthenticated()) {
+//           return res.json({ message: "You are already logged in" });
+//         }
+
+//         passport.authenticate("local", (err, user, info) => {
+//           if (err) {
+//             console.error(err);
+//             return res
+//               .status(500)
+//               .json({ message: "Error occurred while logging in" });
+//           }
+
+//           if (!user) {
+//             return res
+//               .status(401)
+//               .json({ message: "Invalid email or password" });
+//           }
+
+//           req.logIn(user, (err) => {
+//             if (err) {
+//               console.error(err);
+//               return res
+//                 .status(500)
+//                 .json({ message: "Error occurred while logging in" });
+//             }
+
+//             res.json({ message: "Login successful" });
+//           });
+//         })(req, res, next);
+//       });
+
+//       console.error(err);
+//       return res
+//         .status(500)
+//         .json({ message: "Error occurred while logging out" });
+//     }
+//     res.json({ message: "Logout successful" });
+//   });
+// });
+
 router.get("/logout", (req, res) => {
-  req.logout((err) => {
-    if (err) {
-      router.post("/login", (req, res, next) => {
-        if (req.isAuthenticated()) {
-          return res.json({ message: "You are already logged in" });
-        }
+  req.logout(); // Remove the callback function, as it is unnecessary
 
-        passport.authenticate("local", (err, user, info) => {
-          if (err) {
-            console.error(err);
-            return res
-              .status(500)
-              .json({ message: "Error occurred while logging in" });
-          }
-
-          if (!user) {
-            return res
-              .status(401)
-              .json({ message: "Invalid email or password" });
-          }
-
-          req.logIn(user, (err) => {
-            if (err) {
-              console.error(err);
-              return res
-                .status(500)
-                .json({ message: "Error occurred while logging in" });
-            }
-
-            res.json({ message: "Login successful" });
-          });
-        })(req, res, next);
-      });
-
-      console.error(err);
-      return res
-        .status(500)
-        .json({ message: "Error occurred while logging out" });
-    }
-    res.json({ message: "Logout successful" });
-  });
+  res.json({ message: "Logout successful" });
 });
 
 module.exports = router;
